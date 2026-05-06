@@ -1,0 +1,31 @@
+{
+  "name": "cowork-qa-mcp",
+  "version": "0.1.0",
+  "description": "MCP server that runs goal-driven Playwright browser sessions and exposes the full action trace plus aria-snapshots so the calling LLM can verify whether the goal was met.",
+  "keywords": ["mcp", "model-context-protocol", "playwright", "browser-automation", "qa", "llm-tools"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inSideos-designs/cowork-qa-mcp.git"
+  },
+  "type": "module",
+  "bin": {
+    "cowork-qa-mcp": "./dist/server.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/server.ts",
+    "start": "node dist/server.js",
+    "postinstall": "playwright install chromium"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "playwright": "^1.48.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.0",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  }
+}

@@ -1,5 +1,7 @@
 # cowork-qa-mcp
 
+![demo](docs/demo.gif)
+
 A [Model Context Protocol](https://modelcontextprotocol.io) server that gives an LLM a real Chromium browser, records every action it takes toward a stated goal, and hands back a structured trace so the LLM (or a second LLM) can decide whether the goal was actually achieved.
 
 Built on [Playwright](https://playwright.dev). Five tools, one binary, no cloud dependency.

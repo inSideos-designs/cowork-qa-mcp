@@ -1,7 +1,7 @@
 {
   "name": "cowork-qa-mcp",
-  "version": "0.1.0",
-  "mcpName": "io.github.insideos-designs/cowork-qa",
+  "version": "0.1.1",
+  "mcpName": "io.github.inSideos-designs/cowork-qa",
   "description": "MCP server that runs goal-driven Playwright browser sessions and exposes the full action trace plus aria-snapshots so the calling LLM can verify whether the goal was met.",
   "keywords": ["mcp", "model-context-protocol", "playwright", "browser-automation", "qa", "llm-tools"],
   "author": "Siddheya Patade",

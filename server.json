@@ -1,17 +1,17 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.insideos-designs/cowork-qa",
+  "name": "io.github.inSideos-designs/cowork-qa",
   "description": "Goal-driven Playwright browser sessions for LLMs, with full action traces and aria-snapshots.",
   "repository": {
     "url": "https://github.com/inSideos-designs/cowork-qa-mcp",
     "source": "github"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "cowork-qa-mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "transport": {
         "type": "stdio"
       },

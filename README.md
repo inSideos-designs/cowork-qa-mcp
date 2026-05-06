@@ -30,21 +30,24 @@ The orchestrating LLM can then reason over the trace ("did this run actually ful
 
 ## Install
 
-Requires Node 20+.
+Requires Node 20+. The package is on npm — no clone needed.
 
 ```bash
-git clone https://github.com/inSideos-designs/cowork-qa-mcp.git
-cd cowork-qa-mcp
-npm install     # also installs Chromium via Playwright postinstall
-npm run build
+# Try it once, no install
+npx cowork-qa-mcp
+
+# Or install globally
+npm install -g cowork-qa-mcp
 ```
+
+The first install pulls Chromium via Playwright's `postinstall` (~150 MB).
 
 ## Wire into your MCP-compatible client
 
 ### Claude Code
 
 ```bash
-claude mcp add cowork-qa --scope user -- node /absolute/path/to/cowork-qa-mcp/dist/server.js
+claude mcp add cowork-qa --scope user -- npx -y cowork-qa-mcp
 ```
 
 To watch the browser instead of running headless:
@@ -52,12 +55,43 @@ To watch the browser instead of running headless:
 ```bash
 claude mcp add cowork-qa --scope user \
   -e COWORK_QA_HEADED=1 \
-  -- node /absolute/path/to/cowork-qa-mcp/dist/server.js
+  -- npx -y cowork-qa-mcp
 ```
 
-### Other MCP clients
+Verify with `/mcp` inside a fresh `claude` session — you should see `cowork-qa ✓ connected` and 5 tools.
 
-Any MCP client that speaks stdio works. Point it at `dist/server.js`.
+### Claude Desktop
+
+Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
+
+```json
+{
+  "mcpServers": {
+    "cowork-qa": {
+      "command": "npx",
+      "args": ["-y", "cowork-qa-mcp"]
+    }
+  }
+}
+```
+
+### Cursor / Windsurf / other MCP clients
+
+Any client that speaks the MCP stdio transport works. Point its server config at `npx -y cowork-qa-mcp`.
+
+### From source (for development)
+
+```bash
+git clone https://github.com/inSideos-designs/cowork-qa-mcp.git
+cd cowork-qa-mcp
+npm install
+npm run build
+node dist/server.js   # stdio server, expects an MCP client
+```
+
+### MCP Registry
+
+This server is also published on the official [MCP Server Registry](https://registry.modelcontextprotocol.io) as `io.github.inSideos-designs/cowork-qa` — clients that auto-discover from the registry will find it without any manual config.
 
 ## Environment variables
 
